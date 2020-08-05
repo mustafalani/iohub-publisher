@@ -21,6 +21,7 @@ class RTMP(models.Model):
     enable_schedule = models.BooleanField(default=False)
     start_time = models.DateTimeField(default=now, blank=True)
     end_time = models.DateTimeField(default=now, blank=True)
-    if not os.path.isdir('../rtmpconf'):
-        os.makedirs('../rtmpconf')
-    copyfile('../targets/rtmp/rtmp.conf', '../targets/rtmp/Application.conf')
+    dirname = os.path.dirname(__file__)
+    if not os.path.isdir(dirname + 'rtmpconf'):
+        os.makedirs(dirname + 'rtmpconf')
+    copyfile(dirname + '/rtmp.conf',dirname + '/Application.conf')
