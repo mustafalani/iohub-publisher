@@ -23,4 +23,4 @@ class RTMP(models.Model):
     end_time = models.DateTimeField(default=now, blank=True)
     if not os.path.isdir('../rtmpconf'):
         os.makedirs('../rtmpconf')
-    copyfile('/Users/mustafa/Library/Mobile Documents/com~apple~CloudDocs/KURRENT/Projects/iohub/iohub-publisher/src/targets/rtmp/rtmp.conf', '/Users/mustafa/Library/Mobile Documents/com~apple~CloudDocs/KURRENT/Projects/iohub/iohub-publisher/src/targets/rtmp/Application.conf')
+    copyfile('../targets/rtmp/rtmp.conf', '../targets/rtmp/Application.conf')
