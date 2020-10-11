@@ -69,7 +69,7 @@ def AddAppConfig(sender, instance, created, **kwargs):
     httpConf.add(
         nginx.Comment('Application ' + appName + ' HLS configuration')
     )
-    httpContainer = nginx.Location('= /' + appName,
+    httpContainer = nginx.Location(' /' + appName,
         nginx.Comment('Disable cache'),
         nginx.Key('add_header', '\'Cache-Control\' \'no-cache\''),
         nginx.Comment('CORS setup'),
@@ -80,12 +80,14 @@ def AddAppConfig(sender, instance, created, **kwargs):
         nginx.If('($request_method = \'OPTIONS\')',
         nginx.Key('add_header', '\'Access-Control-Allow-Origin\' \'*\''),
         nginx.Key('add_header', '\'Access-Control-Max-Age\' 1728000'),
+        nginx.Key('add_header', '\'Content-Type\' text/plain charset=UTF-8'),
+        nginx.Key('add_header', '\'Content-Length\' 0'),
         nginx.Key('return', '204'),
                  ),
         nginx.Types(
             nginx.Key('application/dash+xml', 'mpd'),
-            nginx.Key('application / vnd.apple.mpegurl', 'm3u8'),
-            nginx.Key('video / mp2t', 'ts')
+            nginx.Key('application/vnd.apple.mpegurl', 'm3u8'),
+            nginx.Key('video/mp2t', 'ts')
         ),
         nginx.Key('root', hls_path)
                                    )
