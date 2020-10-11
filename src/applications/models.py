@@ -56,6 +56,7 @@ def AddAppConfig(sender, instance, created, **kwargs):
     appContainer.add(
         nginx.Key('live', 'on'),
         nginx.Comment('Turn on HLS'),
+        nginx.Key('hls', 'on'),
         nginx.Key('hls_path', hls_path + appName),
         nginx.Key('hls_fragment', hls_fragment),
         nginx.Key('hls_playlist_length', hls_playlist_length),
