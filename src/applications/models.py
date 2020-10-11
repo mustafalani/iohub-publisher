@@ -80,7 +80,7 @@ def AddAppConfig(sender, instance, created, **kwargs):
         nginx.If('($request_method = \'OPTIONS\')',
         nginx.Key('add_header', '\'Access-Control-Allow-Origin\' \'*\''),
         nginx.Key('add_header', '\'Access-Control-Max-Age\' 1728000'),
-        nginx.Key('add_header', '\'Content-Type\' text/plain charset=UTF-8'),
+        nginx.Key('add_header', '\'Content-Type\' \'text/plain charset=UTF-8\''),
         nginx.Key('add_header', '\'Content-Length\' 0'),
         nginx.Key('return', '204'),
                  ),
